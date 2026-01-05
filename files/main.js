@@ -1,6 +1,5 @@
-// ================================
 // Mobile Navigation Toggle
-// ================================
+
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -18,9 +17,8 @@ navLinks.forEach(link => {
     });
 });
 
-// ================================
 // Sticky Navigation on Scroll
-// ================================
+
 const nav = document.getElementById('nav');
 let lastScroll = 0;
 
@@ -37,9 +35,9 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// ================================
+
 // Smooth Scroll with Offset
-// ================================
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -57,9 +55,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ================================
+
 // Intersection Observer for Animations
-// ================================
+
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -100px 0px'
@@ -91,9 +89,9 @@ sections.forEach(section => observer.observe(section));
 projectCards.forEach(card => observer.observe(card));
 skillItems.forEach(item => observer.observe(item));
 
-// ================================
+
 // Skills Progress Animation
-// ================================
+
 const skillsSection = document.querySelector('.skills');
 let skillsAnimated = false;
 
@@ -115,9 +113,9 @@ const animateSkills = () => {
 
 window.addEventListener('scroll', animateSkills);
 
-// ================================
+
 // Contact Form Handling
-// ================================
+
 const contactForm = document.getElementById('contactForm');
 
 contactForm.addEventListener('submit', (e) => {
@@ -213,9 +211,9 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ================================
+
 // Active Nav Link on Scroll
-// ================================
+
 const navLinksArray = Array.from(navLinks);
 const sectionsArray = Array.from(sections);
 
@@ -239,9 +237,9 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ================================
+
 // Parallax Effect for Hero
-// ================================
+
 const heroContent = document.querySelector('.hero-content');
 
 window.addEventListener('scroll', () => {
@@ -252,9 +250,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ================================
+
 // Smooth Page Load Animation
-// ================================
+
 window.addEventListener('load', () => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
@@ -264,9 +262,9 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
-// ================================
+
 // Keyboard Navigation Enhancement
-// ================================
+
 document.addEventListener('keydown', (e) => {
     // Press 'Escape' to close mobile menu
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
@@ -275,9 +273,9 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ================================
+
 // Project Card Tilt Effect (Optional Enhancement)
-// ================================
+
 const cards = document.querySelectorAll('.project-card');
 
 cards.forEach(card => {
@@ -300,9 +298,8 @@ cards.forEach(card => {
     });
 });
 
-// ================================
+
 // Email Validation
-// ================================
 function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -316,9 +313,9 @@ emailInput.addEventListener('blur', () => {
     }
 });
 
-// ================================
+
 // Console Easter Egg
-// ================================
+
 console.log('%cHello, curious developer! 👋', 'color: #d4a574; font-size: 20px; font-weight: bold;');
 console.log('%cLike what you see? Let\'s work together!', 'color: #f5f1e8; font-size: 14px;');
 console.log('%cEmail: your.email@example.com', 'color: #d4a574; font-size: 12px;');
