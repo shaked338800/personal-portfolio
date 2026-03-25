@@ -318,4 +318,4 @@ emailInput.addEventListener('blur', () => {
 
 console.log('%cHello, curious developer! 👋', 'color: #d4a574; font-size: 20px; font-weight: bold;');
 console.log('%cLike what you see? Let\'s work together!', 'color: #f5f1e8; font-size: 14px;');
-console.log('%cEmail: your.email@example.com', 'color: #d4a574; font-size: 12px;');
+console.log('%cEmail: shaked.tzar@gmail.com', 'color: #d4a574; font-size: 12px;');
