@@ -347,7 +347,7 @@ button {
 .btn-primary:hover {
     background: var(--color-accent-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45), 0 0 50px rgba(99, 102, 241, 0.2);
 }
 
 .btn-secondary {
@@ -359,6 +359,7 @@ button {
 .btn-secondary:hover {
     background: var(--color-accent-subtle);
     transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.18);
 }
 
 .hero-image {
@@ -549,14 +550,19 @@ button {
     border-radius: var(--border-radius);
     overflow: hidden;
     border: 1px solid var(--color-border);
-    transition: var(--transition-base);
+    transition: opacity 0.6s ease, transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
     box-shadow: var(--shadow-sm);
+    opacity: 0;
+}
+
+.project-card.visible {
+    opacity: 1;
 }
 
 .project-card:hover {
     transform: translateY(-8px);
     border-color: var(--color-accent);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.15);
 }
 
 .project-image {
@@ -974,4 +980,75 @@ button {
         width: 220px;
         height: 220px;
     }
+}
+
+/* ================================
+   Cursor Glow
+   ================================ */
+.cursor-glow {
+    position: fixed;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    will-change: left, top;
+}
+
+.cursor-particle {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(129, 140, 248, 0.75);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    animation: particleFade 0.7s ease forwards;
+}
+
+@keyframes particleFade {
+    0%   { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0;   transform: translate(-50%, -50%) scale(0.1); }
+}
+
+/* ================================
+   Background Orbs
+   ================================ */
+.bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-orb-1 {
+    width: 500px;
+    height: 500px;
+    background: rgba(99, 102, 241, 0.07);
+    top: -150px;
+    right: -100px;
+    animation: orbFloat1 20s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+    width: 420px;
+    height: 420px;
+    background: rgba(129, 140, 248, 0.05);
+    bottom: 5%;
+    left: -120px;
+    animation: orbFloat2 25s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50%       { transform: translate(-25px, 35px); }
+}
+
+@keyframes orbFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50%       { transform: translate(35px, -25px); }
 }

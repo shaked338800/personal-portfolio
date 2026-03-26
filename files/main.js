@@ -222,8 +222,6 @@ window.addEventListener('scroll', () => {
     
     sectionsArray.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
         if (window.pageYOffset >= sectionTop - nav.offsetHeight - 100) {
             current = section.getAttribute('id');
         }
@@ -312,6 +310,66 @@ emailInput.addEventListener('blur', () => {
         showFormFeedback('Please enter a valid email address', 'error');
     }
 });
+
+
+// ================================
+// Magical Micro-interactions
+// ================================
+
+// Only on non-touch devices
+if (window.matchMedia('(pointer: fine)').matches) {
+
+    // Background orbs
+    ['bg-orb-1', 'bg-orb-2'].forEach(cls => {
+        const orb = document.createElement('div');
+        orb.classList.add('bg-orb', cls);
+        document.body.prepend(orb);
+    });
+
+    // Cursor glow
+    const cursorGlow = document.createElement('div');
+    cursorGlow.classList.add('cursor-glow');
+    document.body.appendChild(cursorGlow);
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let glowX = mouseX;
+    let glowY = mouseY;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        throttledParticle(e.clientX, e.clientY);
+    });
+
+    (function animateCursorGlow() {
+        glowX += (mouseX - glowX) * 0.08;
+        glowY += (mouseY - glowY) * 0.08;
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top  = glowY + 'px';
+        requestAnimationFrame(animateCursorGlow);
+    })();
+
+    // Particle trail
+    let lastParticleTime = 0;
+
+    function spawnParticle(x, y) {
+        const p = document.createElement('div');
+        p.classList.add('cursor-particle');
+        p.style.left = x + 'px';
+        p.style.top  = y + 'px';
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 700);
+    }
+
+    function throttledParticle(x, y) {
+        const now = Date.now();
+        if (now - lastParticleTime > 60) {
+            spawnParticle(x, y);
+            lastParticleTime = now;
+        }
+    }
+}
 
 
 // Console Easter Egg

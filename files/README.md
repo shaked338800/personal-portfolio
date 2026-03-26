@@ -4,7 +4,7 @@ Personal portfolio website built with **HTML, CSS and vanilla JavaScript**.
 The site presents my background, projects, and technical skills.
 
 ## 🔗 Live Demo
-(לא לשכוח להוסיף לעצמי קישור שאעלה את האתר)
+https://shaked-portfolio.netlify.app/
 
 ## 🛠 Technologies
 - HTML5
