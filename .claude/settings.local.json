@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"d:\\\\\\\\Vscode Projects\\\\\\\\Personal_Portfolio\\\\\\\\images\\\\\\\\\")",
+      "Bash(cmd /c \"dir \\\\\"d:\\\\Vscode Projects\\\\Personal_Portfolio\\\\images\\\\\"\")",
+      "Bash(cmd /c \"dir /s /b \\\\\"d:\\\\Vscode Projects\\\\Personal_Portfolio\\\\\" | findstr crypto\")",
+      "Bash(cmd /c \"dir /s /b \\\\\"d:\\\\Vscode Projects\\\\Personal_Portfolio\\\\\" | findstr /i png\")"
+    ]
+  }
+}
