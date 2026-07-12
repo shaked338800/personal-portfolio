@@ -117,99 +117,161 @@ window.addEventListener('scroll', animateSkills);
 // Contact Form Handling
 
 const contactForm = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const formStatus = document.getElementById('formStatus');
+const charCounter = document.getElementById('charCounter');
+const messageInput = document.getElementById('message');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        message: document.getElementById('message').value
-    };
-    
-    // Here you would typically send the data to a server
-    // For now, we'll just show a success message
-    console.log('Form submitted:', formData);
-    
-    // Show success feedback
-    showFormFeedback('Thank you! Your message has been sent successfully.', 'success');
-    
-    // Reset form
-    contactForm.reset();
-});
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykrgaoe';
+const SUBMIT_TIMEOUT_MS = 12000;
 
-// Form validation feedback
-const formInputs = contactForm.querySelectorAll('input, textarea');
-formInputs.forEach(input => {
-    input.addEventListener('blur', () => {
-        if (input.value.trim() === '' && input.hasAttribute('required')) {
-            input.style.borderColor = '#d4574b';
-        } else {
-            input.style.borderColor = 'rgba(212, 165, 116, 0.2)';
-        }
+const FIELD_LIMITS = {
+    name: { max: 50 },
+    email: { max: 100 },
+    message: { min: 10, max: 1000 }
+};
+
+function validateEmailFormat(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Returns an error message for a field, or '' if it's valid
+function getFieldError(name, rawValue) {
+    const value = rawValue.trim();
+
+    if (name === 'name') {
+        if (!value) return 'Please enter your name.';
+        if (value.length > FIELD_LIMITS.name.max) return 'Name must be 50 characters or fewer.';
+    }
+
+    if (name === 'email') {
+        if (!value) return 'Please enter your email address.';
+        if (value.length > FIELD_LIMITS.email.max) return 'Email must be 100 characters or fewer.';
+        if (!validateEmailFormat(value)) return 'Please enter a valid email address.';
+    }
+
+    if (name === 'message') {
+        if (!value) return 'Please enter a message.';
+        if (value.length < FIELD_LIMITS.message.min) return `Message should be at least ${FIELD_LIMITS.message.min} characters.`;
+        if (value.length > FIELD_LIMITS.message.max) return `Message must be ${FIELD_LIMITS.message.max} characters or fewer.`;
+    }
+
+    return '';
+}
+
+function setFieldBorder(input, hasError) {
+    input.style.borderColor = hasError ? '#d4574b' : 'rgba(212, 165, 116, 0.2)';
+}
+
+function resetFieldBorders() {
+    ['name', 'email', 'message'].forEach((name) => {
+        document.getElementById(name).style.borderColor = 'rgba(212, 165, 116, 0.2)';
     });
-    
+}
+
+// Inline feedback as the user leaves each field
+['name', 'email', 'message'].forEach((name) => {
+    const input = document.getElementById(name);
+    input.addEventListener('blur', () => {
+        setFieldBorder(input, Boolean(getFieldError(name, input.value)));
+    });
     input.addEventListener('focus', () => {
         input.style.borderColor = 'var(--color-accent)';
     });
 });
 
-function showFormFeedback(message, type) {
-    // Create feedback element
-    const feedback = document.createElement('div');
-    feedback.textContent = message;
-    feedback.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        padding: 1rem 2rem;
-        background: ${type === 'success' ? 'var(--color-accent)' : '#d4574b'};
-        color: var(--color-dark);
-        border-radius: var(--border-radius);
-        font-weight: 500;
-        z-index: 10000;
-        animation: slideInRight 0.3s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    `;
-    
-    document.body.appendChild(feedback);
-    
-    // Remove after 3 seconds
-    setTimeout(() => {
-        feedback.style.animation = 'slideOutRight 0.3s ease';
-        setTimeout(() => {
-            feedback.remove();
-        }, 300);
-    }, 3000);
+// Live character counter for the message field
+messageInput.addEventListener('input', () => {
+    const length = messageInput.value.length;
+    charCounter.textContent = `${length} / ${FIELD_LIMITS.message.max}`;
+    charCounter.classList.toggle('limit-close', length > FIELD_LIMITS.message.max * 0.9);
+});
+
+let statusFadeTimeout = null;
+
+function setFormStatus(message, type) {
+    clearTimeout(statusFadeTimeout);
+    formStatus.textContent = message;
+    formStatus.className = type ? `form-status ${type}` : 'form-status';
+
+    if (type === 'success') {
+        statusFadeTimeout = setTimeout(() => {
+            formStatus.classList.add('fade-out');
+            setTimeout(() => {
+                formStatus.textContent = '';
+                formStatus.className = 'form-status';
+            }, 400);
+        }, 5000);
+    }
 }
 
-// Add animations for feedback
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from {
-            transform: translateX(400px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
+let isSubmitting = false;
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+
+    // Honeypot: bots tend to fill every field, real users never see this one
+    if (document.getElementById('_gotcha').value) return;
+
+    const fields = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    };
+
+    for (const name of ['name', 'email', 'message']) {
+        const input = document.getElementById(name);
+        const error = getFieldError(name, fields[name]);
+        setFieldBorder(input, Boolean(error));
+        if (error) {
+            setFormStatus(error, 'error');
+            input.focus();
+            return;
         }
     }
-    
-    @keyframes slideOutRight {
-        from {
-            transform: translateX(0);
-            opacity: 1;
+
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    setFormStatus('', '');
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), SUBMIT_TIMEOUT_MS);
+
+    try {
+        const response = await fetch(FORMSPREE_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(contactForm),
+            signal: controller.signal
+        });
+
+        if (!response.ok) {
+            throw new Error(`Formspree responded with status ${response.status}`);
         }
-        to {
-            transform: translateX(400px);
-            opacity: 0;
+
+        console.info('Contact form submitted successfully.');
+        setFormStatus("Thanks! Your message has been sent successfully. I'll get back to you as soon as possible.", 'success');
+        contactForm.reset();
+        charCounter.textContent = `0 / ${FIELD_LIMITS.message.max}`;
+        resetFieldBorders();
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            console.error('Contact form submission timed out.');
+            setFormStatus('This is taking longer than expected. Please check your connection and try again.', 'error');
+        } else {
+            console.error('Contact form submission failed:', error);
+            setFormStatus('Sorry, something went wrong while sending your message. Please try again, or email me directly at shaked.tzar@gmail.com.', 'error');
         }
+    } finally {
+        clearTimeout(timeoutId);
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
     }
-`;
-document.head.appendChild(style);
+});
 
 
 // Active Nav Link on Scroll
@@ -294,21 +356,6 @@ cards.forEach(card => {
     card.addEventListener('mouseleave', () => {
         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });
-});
-
-
-// Email Validation
-function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-}
-
-const emailInput = document.getElementById('email');
-emailInput.addEventListener('blur', () => {
-    if (!validateEmail(emailInput.value) && emailInput.value !== '') {
-        emailInput.style.borderColor = '#d4574b';
-        showFormFeedback('Please enter a valid email address', 'error');
-    }
 });
 
 

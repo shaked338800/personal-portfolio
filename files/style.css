@@ -834,6 +834,52 @@ button {
     min-height: 120px;
 }
 
+.char-counter {
+    align-self: flex-end;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.char-counter.limit-close {
+    color: #d4574b;
+}
+
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.contact-form .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.form-status {
+    font-size: 0.9rem;
+    min-height: 1.2em;
+    margin: 0;
+    transition: opacity 0.4s ease;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status.success {
+    color: #4ade80;
+}
+
+.form-status.error {
+    color: #d4574b;
+}
+
+.form-status.fade-out {
+    opacity: 0;
+}
+
 /* ================================
    Footer
    ================================ */
