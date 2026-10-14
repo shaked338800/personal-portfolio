@@ -1,20 +1,26 @@
+// Respect the user's motion preference in every JS-driven effect below
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+
 // Mobile Navigation Toggle
 
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
 
+const setMenuOpen = (open) => {
+    navMenu.classList.toggle('active', open);
+    navToggle.classList.toggle('active', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+};
+
 navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
+    setMenuOpen(!navMenu.classList.contains('active'));
 });
 
 // Close mobile menu when clicking a link
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
+    link.addEventListener('click', () => setMenuOpen(false));
 });
 
 // Sticky Navigation on Scroll
@@ -49,7 +55,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             
             window.scrollTo({
                 top: targetPosition,
-                behavior: 'smooth'
+                behavior: reducedMotion.matches ? 'auto' : 'smooth'
             });
         }
     });
@@ -67,15 +73,6 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            
-            // Trigger skill bar animations
-            if (entry.target.classList.contains('skill-item')) {
-                const progressBar = entry.target.querySelector('.skill-progress');
-                const progress = progressBar.dataset.progress;
-                setTimeout(() => {
-                    progressBar.style.width = progress + '%';
-                }, 200);
-            }
         }
     });
 }, observerOptions);
@@ -83,35 +80,9 @@ const observer = new IntersectionObserver((entries) => {
 // Observe sections and elements
 const sections = document.querySelectorAll('section');
 const projectCards = document.querySelectorAll('.project-card');
-const skillItems = document.querySelectorAll('.skill-item');
 
 sections.forEach(section => observer.observe(section));
 projectCards.forEach(card => observer.observe(card));
-skillItems.forEach(item => observer.observe(item));
-
-
-// Skills Progress Animation
-
-const skillsSection = document.querySelector('.skills');
-let skillsAnimated = false;
-
-const animateSkills = () => {
-    const skillsPosition = skillsSection.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight;
-    
-    if (skillsPosition < screenPosition && !skillsAnimated) {
-        const progressBars = document.querySelectorAll('.skill-progress');
-        progressBars.forEach(bar => {
-            const progress = bar.dataset.progress;
-            setTimeout(() => {
-                bar.style.width = progress + '%';
-            }, 100);
-        });
-        skillsAnimated = true;
-    }
-};
-
-window.addEventListener('scroll', animateSkills);
 
 
 // Contact Form Handling
@@ -303,6 +274,7 @@ window.addEventListener('scroll', () => {
 const heroContent = document.querySelector('.hero-content');
 
 window.addEventListener('scroll', () => {
+    if (reducedMotion.matches) return;
     const scrolled = window.pageYOffset;
     if (scrolled < window.innerHeight) {
         heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
@@ -311,27 +283,20 @@ window.addEventListener('scroll', () => {
 });
 
 
-// Smooth Page Load Animation
-
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-
 // Keyboard Navigation Enhancement
 
 document.addEventListener('keydown', (e) => {
     // Press 'Escape' to close mobile menu
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
+        setMenuOpen(false);
+        navToggle.focus();
     }
 });
+
+
+// Footer year
+
+document.getElementById('footerYear').textContent = new Date().getFullYear();
 
 
 // Project Card Tilt Effect (Optional Enhancement)
@@ -378,8 +343,8 @@ cards.forEach(card => {
 // Magical Micro-interactions
 // ================================
 
-// Only on non-touch devices
-if (window.matchMedia('(pointer: fine)').matches) {
+// Only on non-touch devices, and not when reduced motion is requested
+if (window.matchMedia('(pointer: fine)').matches && !reducedMotion.matches) {
 
     // Background orbs
     ['bg-orb-1', 'bg-orb-2'].forEach(cls => {
@@ -432,10 +397,3 @@ if (window.matchMedia('(pointer: fine)').matches) {
         }
     }
 }
-
-
-// Console Easter Egg
-
-console.log('%cHello, curious developer! 👋', 'color: #d4a574; font-size: 20px; font-weight: bold;');
-console.log('%cLike what you see? Let\'s work together!', 'color: #f5f1e8; font-size: 14px;');
-console.log('%cEmail: shaked.tzar@gmail.com', 'color: #d4a574; font-size: 12px;');

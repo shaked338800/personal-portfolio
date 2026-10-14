@@ -5,8 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Shaked Tzarfati | Computer Science student building projects in software development.">
-    <title>Shaked Tzarfati | Portfolio</title>
+        content="Shaked Tzarfati, junior full-stack developer. Completed all academic requirements for a B.Sc. in Computer Science at HIT. Projects with React, TypeScript, Node.js, Express, PostgreSQL and LLM-powered features.">
+    <title>Shaked Tzarfati | Junior Full-Stack Developer</title>
+    <link rel="canonical" href="https://shaked-portfolio.netlify.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shaked-portfolio.netlify.app/">
+    <meta property="og:title" content="Shaked Tzarfati | Junior Full-Stack Developer">
+    <meta property="og:description"
+        content="Completed all academic requirements for a B.Sc. in Computer Science at HIT. Building full-stack web apps and AI-powered tools with React, TypeScript, Node.js and PostgreSQL.">
+    <meta property="og:image" content="https://shaked-portfolio.netlify.app/images/MyProfile.jpeg">
+    <meta property="og:image:alt" content="Portrait of Shaked Tzarfati">
+    <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +29,7 @@
     <nav class="nav" id="nav">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">SZ</a>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -40,14 +49,26 @@
             <div class="hero-text">
                 <p class="hero-greeting fade-in">Hi, I'm</p>
                 <h1 class="hero-name fade-in">Shaked Tzarfati</h1>
-                <p class="hero-title fade-in">Computer Science Student & Developer</p>
+                <p class="hero-title fade-in">Junior Full-Stack Developer <span class="hero-title-sep" aria-hidden="true">|</span> Backend &amp; AI Applications</p>
                 <p class="hero-description fade-in">
-                    I build web applications and enjoy solving problems through code. Currently studying CS in Israel
-                    and working on projects that help me grow as a developer.
+                    Completed all academic requirements for a B.Sc. in Computer Science at HIT. I build full-stack
+                    web applications and AI-powered tools with React, TypeScript, Node.js and PostgreSQL, and I'm
+                    looking for a junior full-stack, backend or AI applications role in Israel.
                 </p>
                 <div class="hero-cta fade-in">
-                    <a href="#projects" class="btn btn-primary">See My Projects</a>
-                    <a href="#contact" class="btn btn-secondary">Let's Connect</a>
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://github.com/shaked338800" class="btn btn-secondary btn-icon" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile (opens in a new tab)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shaked-tzarfati-550558262/" class="btn btn-secondary btn-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in a new tab)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
                 </div>
             </div>
             <div class="hero-image">
@@ -63,38 +84,49 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">01</span>
+                <span class="section-number" aria-hidden="true">01</span>
                 <h2 class="section-title">About Me</h2>
             </div>
             <div class="about-content">
                 <div class="about-text">
                     <p class="lead">
-                        I'm a Computer Science student with a strong interest in building clean, functional, and
-                        user-focused web applications.
+                        I've completed all academic requirements for a B.Sc. in Computer Science at HIT (Holon
+                        Institute of Technology), and most of what I know about building software comes from
+                        building it.
                     </p>
                     <p>
-                        I’m currently studying for a B.Sc. in Computer Science, where I work with data structures,
-                        algorithms, and object-oriented programming,
-                        while applying these concepts in practical web and software projects.
+                        My hands-on work is mainly full-stack: React and TypeScript on the frontend, Node.js and
+                        Express on the backend, and PostgreSQL with Prisma for data. I've built REST APIs with
+                        authentication and validation, deployed my projects, and in recent projects added
+                        LLM-powered features, including retrieval (RAG) and tool calling.
                     </p>
                     <p>
-                        I enjoy turning ideas into real products, focusing on clarity, maintainability, and continuous
-                        improvement.
-                        I'm especially interested in frontend development, system design basics, and learning how things
-                        work under the hood.
+                        In 2024&ndash;2025 I also worked as a coding instructor at DigiTech, teaching HTML, CSS and
+                        JavaScript and helping learners debug their projects, which taught me to explain technical
+                        ideas clearly.
+                    </p>
+                    <p>
+                        What interests me most is the backend side: how APIs, data models and AI services fit
+                        together into something reliable. I'm looking for a junior role where I can learn from an
+                        experienced team and grow as a software engineer.
+                    </p>
+                    <p class="about-coursework">
+                        <span class="about-coursework-label">Relevant coursework:</span>
+                        Data Structures &amp; Algorithms, Object-Oriented Programming, Databases, Operating Systems,
+                        Computability &amp; Complexity, Android Development.
                     </p>
                     <div class="about-highlights">
                         <div class="highlight-item">
-                            <h3>CS</h3>
-                            <p>B.Sc. Student</p>
+                            <strong class="highlight-value">HIT</strong>
+                            <p>B.Sc. CS requirements completed</p>
                         </div>
                         <div class="highlight-item">
-                            <h3>Projects</h3>
-                            <p>coming soon</p>
+                            <strong class="highlight-value">3</strong>
+                            <p>Featured projects</p>
                         </div>
                         <div class="highlight-item">
-                            <h3>∞</h3>
-                            <p>Learning Mindset</p>
+                            <strong class="highlight-value">2</strong>
+                            <p>Live demos</p>
                         </div>
                     </div>
                 </div>
@@ -109,7 +141,7 @@
     <section class="projects" id="projects">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">02</span>
+                <span class="section-number" aria-hidden="true">02</span>
                 <h2 class="section-title">Selected Projects</h2>
             </div>
             <div class="projects-grid">
@@ -118,16 +150,16 @@
                         <picture>
                             <source type="image/avif" srcset="images/crypto-advisor-800.avif 800w, images/crypto-advisor-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 400px">
                             <source type="image/webp" srcset="images/crypto-advisor-800.webp 800w, images/crypto-advisor-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 400px">
-                            <img src="images/crypto-advisor-800.jpg" srcset="images/crypto-advisor-800.jpg 800w, images/crypto-advisor-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="408" loading="lazy" decoding="async" alt="Crypto Advisor Platform screenshot" class="project-img">
+                            <img src="images/crypto-advisor-800.jpg" srcset="images/crypto-advisor-800.jpg 800w, images/crypto-advisor-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="408" loading="lazy" decoding="async" alt="AI Crypto Advisor dashboard screenshot" class="project-img">
                         </picture>
                         <div class="project-overlay">
-                            <a href="https://moveo-crypto-advisor-s.vercel.app" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer" aria-label="Crypto Advisor Platform live demo (opens in a new tab)">
+                            <a href="https://moveo-crypto-advisor-s.vercel.app" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer" aria-label="AI Crypto Advisor live demo (opens in a new tab)">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                     <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
                                 </svg>
                                 <span>Live Demo</span>
                             </a>
-                            <a href="https://github.com/shaked338800/moveo-crypto-advisor" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Crypto Advisor Platform source code on GitHub (opens in a new tab)">
+                            <a href="https://github.com/shaked338800/moveo-crypto-advisor" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="AI Crypto Advisor source code on GitHub (opens in a new tab)">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
                                 </svg>
@@ -137,17 +169,25 @@
                     </div>
                     <div class="project-info">
                         <h3 class="project-title">
-                            <a href="https://moveo-crypto-advisor-s.vercel.app" class="project-title-link" target="_blank" rel="noopener noreferrer">Crypto Advisor Platform</a>
+                            <a href="https://moveo-crypto-advisor-s.vercel.app" class="project-title-link" target="_blank" rel="noopener noreferrer">AI Crypto Advisor</a>
                         </h3>
+                        <p class="project-kind">Full-stack web app</p>
                         <p class="project-description">
-                            A full-stack app that personalizes crypto content based on selected coins, investor type, and user preferences — cutting through market noise with a tailored experience.
+                            A personalized crypto dashboard with prices, news and a daily AI insight based on each user&rsquo;s preferences.
                         </p>
+                        <p class="project-highlights-title">What I built</p>
+                        <ul class="project-highlights">
+                            <li>REST API in TypeScript with Node.js and Express</li>
+                            <li>JWT auth, Zod validation, rate limiting and centralized error handling</li>
+                            <li>PostgreSQL with Prisma migrations; deployed on Vercel and Render</li>
+                        </ul>
                         <div class="project-tags">
                             <span class="tag">React</span>
                             <span class="tag">TypeScript</span>
-                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
                             <span class="tag">PostgreSQL</span>
                             <span class="tag">Prisma</span>
+                            <span class="tag">JWT</span>
                         </div>
                     </div>
                 </article>
@@ -157,7 +197,7 @@
                         <picture>
                             <source type="image/avif" srcset="images/ai-resume-copilot-800.avif">
                             <source type="image/webp" srcset="images/ai-resume-copilot-800.webp">
-                            <img src="images/ai-resume-copilot-800.jpg" width="800" height="765" loading="lazy" decoding="async" alt="AI Resume Copilot screenshot" class="project-img">
+                            <img src="images/ai-resume-copilot-800.jpg" width="800" height="765" loading="lazy" decoding="async" alt="AI Resume Copilot analysis screen screenshot" class="project-img">
                         </picture>
                         <div class="project-overlay">
                             <a href="https://ai-resume-copilot-six.vercel.app" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer" aria-label="AI Resume Copilot live demo (opens in a new tab)">
@@ -178,70 +218,70 @@
                         <h3 class="project-title">
                             <a href="https://ai-resume-copilot-six.vercel.app" class="project-title-link" target="_blank" rel="noopener noreferrer">AI Resume Copilot</a>
                         </h3>
+                        <p class="project-kind">AI application</p>
                         <p class="project-description">
-                            An AI-powered tool that analyzes a resume against any job description and scores the match, highlighting strengths and gaps for the role.
+                            Compares a resume with a job description and returns a match score, gaps and likely interview questions.
                         </p>
+                        <p class="project-highlights-title">What I built</p>
+                        <ul class="project-highlights">
+                            <li>FastAPI backend with schema-validated JSON output</li>
+                            <li>Hand-written tool-calling agent with retries and a fallback path</li>
+                            <li>RAG with Gemini embeddings; pytest suite with mocked LLM calls</li>
+                        </ul>
                         <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Tailwind CSS</span>
-                            <span class="tag">FastAPI</span>
                             <span class="tag">Python</span>
+                            <span class="tag">FastAPI</span>
                             <span class="tag">LiteLLM</span>
                             <span class="tag">Gemini</span>
                             <span class="tag">RAG</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Docker</span>
+                            <span class="tag">React</span>
                         </div>
                     </div>
                 </article>
 
-                <article class="project-card">
+                <article class="project-card has-link">
                     <div class="project-image">
-                        <div class="image-placeholder">Project 3</div>
+                        <!-- Stack overview instead of a screenshot: the app has no public deployment -->
+                        <div class="project-stack" role="img" aria-label="StudyConnect architecture: React client, Node.js and Express API with Socket.io, MongoDB database, and the Gemini API">
+                            <span class="stack-node">React client</span>
+                            <span class="stack-arrow" aria-hidden="true">&#8597;</span>
+                            <span class="stack-node stack-node--core">Node.js + Express API<small>Socket.io &middot; sessions</small></span>
+                            <span class="stack-arrow" aria-hidden="true">&#8597;</span>
+                            <span class="stack-row">
+                                <span class="stack-node">MongoDB</span>
+                                <span class="stack-node">Gemini API</span>
+                            </span>
+                        </div>
                         <div class="project-overlay">
-                            <a href="#" class="project-link" aria-label="View project 3">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+                            <a href="https://github.com/shaked338800/StudyConnect" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer" aria-label="StudyConnect source code on GitHub (opens in a new tab)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
                                 </svg>
+                                <span>View Code</span>
                             </a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Portfolio Website</h3>
+                        <h3 class="project-title">
+                            <a href="https://github.com/shaked338800/StudyConnect" class="project-title-link" target="_blank" rel="noopener noreferrer">StudyConnect</a>
+                        </h3>
+                        <p class="project-kind">Academic Team Project</p>
                         <p class="project-description">
-                            Clean, responsive portfolio site for a creative professional.
+                            A study-group network with real-time chat, statistics and AI-generated quizzes, built by a student team as an academic project.
                         </p>
+                        <p class="project-highlights-title">Project highlights</p>
+                        <ul class="project-highlights">
+                            <li>Express API in an MVC structure with session auth and server-side validation</li>
+                            <li>MongoDB models with Mongoose and multi-parameter search</li>
+                            <li>Socket.io group chat and quizzes generated with the Gemini API</li>
+                        </ul>
                         <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image">
-                        <div class="image-placeholder">Project 4</div>
-                        <div class="project-overlay">
-                            <a href="#" class="project-link" aria-label="View project 4">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Weather Dashboard</h3>
-                        <p class="project-description">
-                            Real-time weather data visualization with location-based forecasts.
-                        </p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">API</span>
-                            <span class="tag">Chart.js</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Socket.io</span>
+                            <span class="tag">React</span>
+                            <span class="tag">Gemini</span>
                         </div>
                     </div>
                 </article>
@@ -253,98 +293,79 @@
     <section class="skills" id="skills">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">03</span>
-                <h2 class="section-title">Skills & Expertise</h2>
+                <span class="section-number" aria-hidden="true">03</span>
+                <h2 class="section-title">Tech Stack</h2>
             </div>
+            <p class="skills-legend">
+                <span class="skill-chip">Hands-on</span> used in my own projects
+                <span class="skills-legend-sep" aria-hidden="true">&middot;</span>
+                <span class="skill-chip skill-chip--basic">Foundational</span> basic experience from coursework or a single project
+            </p>
             <div class="skills-content">
                 <div class="skill-category">
+                    <h3 class="category-title">Languages</h3>
+                    <ul class="skill-chips">
+                        <li class="skill-chip">JavaScript</li>
+                        <li class="skill-chip">TypeScript</li>
+                        <li class="skill-chip">C#</li>
+                        <li class="skill-chip">SQL</li>
+                        <li class="skill-chip skill-chip--basic">Python<span class="visually-hidden"> (foundational)</span></li>
+                        <li class="skill-chip skill-chip--basic">Java<span class="visually-hidden"> (foundational)</span></li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
                     <h3 class="category-title">Frontend</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">HTML/CSS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">JavaScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">React</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Vue.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <ul class="skill-chips">
+                        <li class="skill-chip">React</li>
+                        <li class="skill-chip">HTML</li>
+                        <li class="skill-chip">CSS</li>
+                        <li class="skill-chip">Vite</li>
+                    </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3 class="category-title">Backend & Tools</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">Node.js</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Git/GitHub</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">SQL/NoSQL</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="75"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">API Development</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="category-title">Backend</h3>
+                    <ul class="skill-chips">
+                        <li class="skill-chip">Node.js</li>
+                        <li class="skill-chip">Express</li>
+                        <li class="skill-chip">REST APIs</li>
+                        <li class="skill-chip">JWT Authentication</li>
+                        <li class="skill-chip skill-chip--basic">FastAPI<span class="visually-hidden"> (foundational)</span></li>
+                        <li class="skill-chip skill-chip--basic">Socket.io<span class="visually-hidden"> (foundational)</span></li>
+                    </ul>
                 </div>
 
                 <div class="skill-category">
-                    <h3 class="category-title">Design & Other</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">
-                            <span class="skill-name">UI/UX Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Figma</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Responsive Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Performance Optimization</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="category-title">Databases</h3>
+                    <ul class="skill-chips">
+                        <li class="skill-chip">PostgreSQL</li>
+                        <li class="skill-chip">Prisma</li>
+                        <li class="skill-chip skill-chip--basic">MongoDB<span class="visually-hidden"> (foundational)</span></li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">AI Applications</h3>
+                    <ul class="skill-chips">
+                        <li class="skill-chip">LLM API Integration</li>
+                        <li class="skill-chip">Gemini API</li>
+                        <li class="skill-chip skill-chip--basic">RAG<span class="visually-hidden"> (foundational)</span></li>
+                        <li class="skill-chip skill-chip--basic">Tool Calling<span class="visually-hidden"> (foundational)</span></li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="category-title">Tools &amp; Deployment</h3>
+                    <ul class="skill-chips">
+                        <li class="skill-chip">Git</li>
+                        <li class="skill-chip">GitHub</li>
+                        <li class="skill-chip">Postman</li>
+                        <li class="skill-chip">Vercel</li>
+                        <li class="skill-chip">Render</li>
+                        <li class="skill-chip">Netlify</li>
+                        <li class="skill-chip skill-chip--basic">AWS basics<span class="visually-hidden"> (foundational)</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -354,15 +375,16 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-header">
-                <span class="section-number">04</span>
-                <h2 class="section-title">Get In Touch</h2>
+                <span class="section-number" aria-hidden="true">04</span>
+                <h2 class="section-title">Contact</h2>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Let's work together</h3>
+                    <h3>Open to junior roles</h3>
                     <p>
-                        I'm always interested in hearing about new projects and opportunities.
-                        Whether you have a question or just want to say hi, feel free to reach out!
+                        I'm looking for junior full-stack, backend or AI applications developer roles in Israel,
+                        and I'm also open to QA automation positions. If you're hiring or want to talk about one
+                        of my projects, email or LinkedIn is the fastest way to reach me.
                     </p>
                     <div class="contact-details">
                         <a href="mailto:shaked.tzar@gmail.com" class="contact-item">
@@ -428,7 +450,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Shaked Tzarfati. Built with HTML, CSS & JavaScript.</p>
+            <p>&copy; <span id="footerYear">2026</span> Shaked Tzarfati. Built with HTML, CSS &amp; JavaScript.</p>
             <div class="footer-links">
                 <a href="#hero">Back to Top</a>
             </div>
