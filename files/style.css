@@ -319,10 +319,11 @@ button {
     margin: 0 0.35em;
 }
 
+/* 2 x 2: main actions (projects, CV) on top, profiles below; columns share widths */
 .hero-cta {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
     gap: var(--spacing-sm);
-    flex-wrap: wrap;
 }
 
 /* .btn sets inline-block later in the file; the extra class keeps the icon and label aligned */
@@ -1238,9 +1239,20 @@ button {
         padding-top: calc(var(--nav-height) + var(--spacing-md));
     }
 
+    /* Main actions full width; GitHub and LinkedIn share the last row */
+    .hero-cta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-cta .btn-primary,
+    .hero-cta .btn-cv {
+        grid-column: 1 / -1;
+    }
+
     .hero-cta .btn-icon {
-        flex: 1;
-        width: auto;
+        /* half-width buttons: the default 2rem side padding leaves no room for the label at 320px */
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     
     .btn {
