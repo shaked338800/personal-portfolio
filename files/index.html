@@ -113,20 +113,32 @@
                 <h2 class="section-title">Selected Projects</h2>
             </div>
             <div class="projects-grid">
-                <article class="project-card" onclick="window.open('https://moveo-crypto-advisor-s.vercel.app', '_blank')" style="cursor: pointer;">
+                <article class="project-card has-link">
                     <div class="project-image">
-                        <img src="images/crypto-advisor.png" alt="Crypto Advisor Platform screenshot" class="project-img">
+                        <picture>
+                            <source type="image/avif" srcset="images/crypto-advisor-800.avif 800w, images/crypto-advisor-1200.avif 1200w" sizes="(max-width: 768px) 100vw, 400px">
+                            <source type="image/webp" srcset="images/crypto-advisor-800.webp 800w, images/crypto-advisor-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 400px">
+                            <img src="images/crypto-advisor-800.jpg" srcset="images/crypto-advisor-800.jpg 800w, images/crypto-advisor-1200.jpg 1200w" sizes="(max-width: 768px) 100vw, 400px" width="800" height="408" loading="lazy" decoding="async" alt="Crypto Advisor Platform screenshot" class="project-img">
+                        </picture>
                         <div class="project-overlay">
-                            <a href="https://github.com/shaked338800/moveo-crypto-advisor" class="project-link" aria-label="View Crypto Advisor Platform on GitHub" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+                            <a href="https://moveo-crypto-advisor-s.vercel.app" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer" aria-label="Crypto Advisor Platform live demo (opens in a new tab)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
                                 </svg>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/shaked338800/moveo-crypto-advisor" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="Crypto Advisor Platform source code on GitHub (opens in a new tab)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                                </svg>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">Crypto Advisor Platform</h3>
+                        <h3 class="project-title">
+                            <a href="https://moveo-crypto-advisor-s.vercel.app" class="project-title-link" target="_blank" rel="noopener noreferrer">Crypto Advisor Platform</a>
+                        </h3>
                         <p class="project-description">
                             A full-stack app that personalizes crypto content based on selected coins, investor type, and user preferences — cutting through market noise with a tailored experience.
                         </p>
@@ -140,20 +152,32 @@
                     </div>
                 </article>
 
-                <article class="project-card" onclick="window.open('https://ai-resume-copilot-six.vercel.app', '_blank')" style="cursor: pointer;">
+                <article class="project-card has-link">
                     <div class="project-image">
-                        <img src="images/ai-resume-copilot.jpeg" alt="AI Resume Copilot screenshot" class="project-img">
+                        <picture>
+                            <source type="image/avif" srcset="images/ai-resume-copilot-800.avif">
+                            <source type="image/webp" srcset="images/ai-resume-copilot-800.webp">
+                            <img src="images/ai-resume-copilot-800.jpg" width="800" height="765" loading="lazy" decoding="async" alt="AI Resume Copilot screenshot" class="project-img">
+                        </picture>
                         <div class="project-overlay">
-                            <a href="https://github.com/shaked338800/AI-Resume-Copilot" class="project-link" aria-label="View AI Resume Copilot on GitHub" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
+                            <a href="https://ai-resume-copilot-six.vercel.app" class="project-link project-link--primary" target="_blank" rel="noopener noreferrer" aria-label="AI Resume Copilot live demo (opens in a new tab)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3" />
                                 </svg>
+                                <span>Live Demo</span>
+                            </a>
+                            <a href="https://github.com/shaked338800/AI-Resume-Copilot" class="project-link" target="_blank" rel="noopener noreferrer" aria-label="AI Resume Copilot source code on GitHub (opens in a new tab)">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" />
+                                </svg>
+                                <span>GitHub</span>
                             </a>
                         </div>
                     </div>
                     <div class="project-info">
-                        <h3 class="project-title">AI Resume Copilot</h3>
+                        <h3 class="project-title">
+                            <a href="https://ai-resume-copilot-six.vercel.app" class="project-title-link" target="_blank" rel="noopener noreferrer">AI Resume Copilot</a>
+                        </h3>
                         <p class="project-description">
                             An AI-powered tool that analyzes a resume against any job description and scores the match, highlighting strengths and gaps for the role.
                         </p>

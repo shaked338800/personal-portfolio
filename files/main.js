@@ -335,26 +335,41 @@ document.addEventListener('keydown', (e) => {
 
 
 // Project Card Tilt Effect (Optional Enhancement)
+// Sets --tilt-x/--tilt-y so the CSS hover transform (lift + tilt) stays in control.
+// Only for fine pointers that can hover, and never when reduced motion is requested.
+// Placeholder cards have no link, so they don't tilt.
 
-const cards = document.querySelectorAll('.project-card');
+const cards = document.querySelectorAll('.project-card.has-link');
+const tiltQuery = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
 
 cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
+    // Measure the card once on enter, before the hover transform moves it; measuring the
+    // tilted, animating card on every move makes the angles drift. Page coordinates keep
+    // the measurement valid if the user scrolls while hovering.
+    let center = null;
+
+    card.addEventListener('mouseenter', () => {
         const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        center = {
+            x: rect.left + window.scrollX + rect.width / 2,
+            y: rect.top + window.scrollY + rect.height / 2
+        };
+    });
+
+    card.addEventListener('mousemove', (e) => {
+        if (!tiltQuery.matches || !center) return;
+
+        const rotateX = (e.pageY - center.y) / 20;
+        const rotateY = (center.x - e.pageX) / 20;
+
+        card.style.setProperty('--tilt-x', `${rotateX}deg`);
+        card.style.setProperty('--tilt-y', `${rotateY}deg`);
     });
     
     card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        center = null;
+        card.style.removeProperty('--tilt-x');
+        card.style.removeProperty('--tilt-y');
     });
 });
 

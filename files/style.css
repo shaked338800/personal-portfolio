@@ -54,6 +54,11 @@ html {
     scroll-behavior: smooth;
 }
 
+:focus-visible {
+    outline: 2px solid var(--color-accent-light);
+    outline-offset: 3px;
+}
+
 body {
     font-family: var(--font-body);
     background-color: var(--color-bg-primary);
@@ -546,6 +551,7 @@ button {
 }
 
 .project-card {
+    position: relative;
     background: var(--color-bg-card);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -559,8 +565,11 @@ button {
     opacity: 1;
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
+/* Tilt angles are set by main.js as custom properties so the lift and tilt compose.
+   Only keyboard focus (:focus-visible) raises the card, so it doesn't stay raised after a mouse click.
+   :is() keeps :hover working in browsers without :has() support. */
+.project-card:is(:hover, :has(:focus-visible)) {
+    transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateY(-8px);
     border-color: var(--color-accent);
     box-shadow: var(--shadow-xl), 0 0 40px rgba(99, 102, 241, 0.15);
 }
@@ -580,7 +589,7 @@ button {
     transition: transform 0.4s ease;
 }
 
-.project-card:hover .project-img {
+.project-card:is(:hover, :has(:focus-visible)) .project-img {
     transform: scale(1.04);
 }
 
@@ -598,38 +607,114 @@ button {
 
 .project-overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(99, 102, 241, 0.95);
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(99, 102, 241, 0.25) 0%, rgba(15, 23, 42, 0.8) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.75rem;
+    padding: var(--spacing-sm);
     opacity: 0;
     transition: var(--transition-base);
+    /* Clicks on the empty overlay fall through to the card's stretched link */
+    pointer-events: none;
 }
 
-.project-card:hover .project-overlay {
+.project-card:is(:hover, :has(:focus-visible)) .project-overlay {
     opacity: 1;
 }
 
 .project-link {
+    pointer-events: auto;
     color: #FFFFFF;
-    width: 50px;
+    min-width: 50px;
     height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
+    padding: 0 0.8rem;
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
     transition: var(--transition-fast);
+}
+
+.project-link span {
+    padding-right: 0.3rem;
+}
+
+.project-link--primary {
+    /* Darker than --color-accent so white label text meets WCAG AA (6.3:1) */
+    background: #4F46E5;
+    border-color: #4F46E5;
 }
 
 .project-link:hover {
     background: #FFFFFF;
+    border-color: #FFFFFF;
     color: var(--color-accent);
-    transform: scale(1.1);
+    transform: scale(1.06);
+}
+
+.project-link:focus-visible {
+    outline: 2px solid #FFFFFF;
+    outline-offset: 3px;
+}
+
+/* Stretched link: the title link covers the whole card, the overlay buttons sit above it */
+.project-title-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.project-title-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.project-title-link:hover {
+    color: var(--color-accent-light);
+}
+
+/* Touch devices have no hover: keep both links visible along the bottom of the image.
+   Placeholder cards (no .has-link) have no real destination, so their overlay stays hidden. */
+@media (hover: none) {
+    .project-card.has-link .project-overlay {
+        opacity: 1;
+        align-items: flex-end;
+        background: linear-gradient(180deg, transparent 45%, rgba(15, 23, 42, 0.85) 100%);
+    }
+
+    .project-link {
+        height: 44px;
+        min-width: 44px;
+    }
+
+    .project-card:not(.has-link) .project-overlay {
+        visibility: hidden;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-card,
+    .project-img,
+    .project-overlay,
+    .project-link {
+        transition: none;
+    }
+
+    .project-card:is(:hover, :has(:focus-visible)),
+    .project-card:is(:hover, :has(:focus-visible)) .project-img,
+    .project-link:hover {
+        transform: none;
+    }
 }
 
 .project-info {
